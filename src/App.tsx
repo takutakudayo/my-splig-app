@@ -139,7 +139,7 @@ const App = () => {
                 min={0}
                 placeholder="10000"
                 style={{ width: "80%" }}
-                onChange={setAmount}
+                onChange={(v) => setAmount(typeof v === "number" ? v : 0)}
               />
             </Form.Item>
 
@@ -167,7 +167,12 @@ const App = () => {
                       borderColor: isPercentageValid ? undefined : "red",
                     }}
                     placeholder="割合 (%)"
-                    onChange={(value) => handlePercentageChange(index, value)}
+                    onChange={(value) =>
+                      handlePercentageChange(
+                        index,
+                        typeof value === "number" ? value : 0
+                      )
+                    }
                   />
                 </Col>
               </Row>
